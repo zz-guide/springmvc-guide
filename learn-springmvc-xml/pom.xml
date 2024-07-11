@@ -4,12 +4,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>org.zz</groupId>
-        <artifactId>spring-guide</artifactId>
+        <groupId>org.zz.springmvc.guide</groupId>
+        <artifactId>springmvc-guide</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
 
-    <artifactId>spring-mvc</artifactId>
+    <groupId>org.zz.springmvc.guide.xml</groupId>
+    <artifactId>learn-springmvc-xml</artifactId>
+
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>

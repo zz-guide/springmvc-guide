@@ -21,5 +21,5 @@
     </bean>
 
     <!--此处的id必须加/,表示一个路径-->
-    <bean id="/hello" class="org.zz.controller.HelloController"/>
+    <bean id="/hello" class="org.zz.springmvc.guide.xml.controller.HelloController"/>
 </beans>
