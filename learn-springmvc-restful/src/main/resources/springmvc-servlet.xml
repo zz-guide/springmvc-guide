@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans
+        https://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context
+        https://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc
+        https://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <context:component-scan base-package="org.zz.springmvc.guide.restful"/>
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="prefix" value="/WEB-INF/jsp/"/>
+        <property name="suffix" value=".jsp"/>
+    </bean>
+
+    <!--配置自定义异常类-->
+    <!--配置了 mvc:annotation-driven 会影响自定义异常的实现-->
+<!--    <bean class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">-->
+<!--        <property name="exceptionMappings" >-->
+<!--            <props>-->
+<!--                &lt;!&ndash;key是异常，value是视图名称&ndash;&gt;-->
+<!--                <prop key="java.lang.Exception">tip</prop>-->
+<!--            </props>-->
+<!--        </property>-->
+<!--        &lt;!&ndash;将当前发生的异常信息存储到request域e变量&ndash;&gt;-->
+<!--        <property name="exceptionAttribute" value="e" />-->
+<!--    </bean>-->
+
+    <mvc:annotation-driven>
+        <!--统一将string类型响应进行编码-->
+        <mvc:message-converters>
+            <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/plain;charset=UTF-8</value>
+                    </list>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+    <mvc:default-servlet-handler/>
+
+    <mvc:interceptors>
+        <!--第一种方式，常规bean配置，默认情况下拦截所有请求-->
+<!--        <bean class="org.zz.springmvc.guide.restful.interceptor.TestInterceptor" />-->
+
+        <!--拦截器执行顺序根据定义，自上而下执行-->
+        <mvc:interceptor>
+            <!--拦截所有路径-->
+            <mvc:mapping path="/**"/>
+            <!--放行/ok-->
+            <mvc:exclude-mapping path="/user/ok" />
+            <!--第二种方式，bean名称是小写的-->
+            <ref bean="testInterceptor" />
+        </mvc:interceptor>
+
+    </mvc:interceptors>
+</beans>

@@ -10,8 +10,8 @@
     </parent>
 
     <packaging>war</packaging>
-    <groupId>org.zz.springmvc.guide.xml</groupId>
-    <artifactId>learn-springmvc-xml</artifactId>
+    <groupId>org.zz.springmvc.guide.annotation</groupId>
+    <artifactId>learn-springmvc-annotation</artifactId>
 
     <dependencies>
         <dependency>

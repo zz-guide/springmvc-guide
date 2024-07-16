@@ -3,7 +3,6 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
-    <!--springmvc配置DispatcherServlet接管servlet并做处理-->
     <servlet>
         <servlet-name>app</servlet-name>
         <servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
@@ -12,17 +11,24 @@
             <param-value>classpath:springmvc-servlet.xml</param-value>
         </init-param>
         <load-on-startup>1</load-on-startup>
+
+        <multipart-config>
+            <!--单个文件最大，默认值为1MB, 100MB-->
+            <max-file-size>102400000</max-file-size>
+            <!--表单所有文件上传最大，1000M-->
+            <max-request-size>1024000000</max-request-size>
+            <!--最小文件上传大小-->
+            <file-size-threshold>0</file-size-threshold>
+        </multipart-config>
     </servlet>
 
     <servlet-mapping>
         <servlet-name>app</servlet-name>
-        <!--如果没有index.jsp，匹配到根路径就会交给DispatcherServlet处理-->
         <url-pattern>/</url-pattern>
     </servlet-mapping>
 
-    <!--    设置过滤器防止字符乱码-->
     <filter>
-        <filter-name>encodingFilter</filter-name>
+        <filter-name>characterEncodingFilter</filter-name>
         <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
         <init-param>
             <param-name>encoding</param-name>
@@ -34,7 +40,17 @@
         </init-param>
     </filter>
     <filter-mapping>
-        <filter-name>encodingFilter</filter-name>
+        <filter-name>characterEncodingFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!--可以将post请求转化成put delete 请求-->
+    <filter>
+        <filter-name>hiddenHttpMethodFilter</filter-name>
+        <filter-class>org.springframework.web.filter.HiddenHttpMethodFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>hiddenHttpMethodFilter</filter-name>
         <url-pattern>/*</url-pattern>
     </filter-mapping>
 </web-app>
