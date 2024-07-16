@@ -80,16 +80,18 @@ public class FileController {
         String realPath = servletContext.getRealPath("/upload/"+"1.jpg");
         System.out.println("realPath:"+realPath);
         File file = new File(realPath);
+        if (file.exists()) {
+            // 文件下载设置
+            HttpHeaders httpHeaders = new HttpHeaders();
+            // 告知浏览器这是一个字节流，浏览器处理字节流的默认方式就是下载。
+            httpHeaders.setContentType(MediaType.APPLICATION_OCTET_STREAM);
+            // 在常规的 HTTP 应答中，Content-Disposition 响应标头指示回复的内容该以何种形式展示，是以内联的形式（即网页或者页面的一部分），还是以附件的形式下载并保存到本地
+            httpHeaders.setContentDispositionFormData("attachment", file.getName());
 
-        // 文件下载设置
-        HttpHeaders httpHeaders = new HttpHeaders();
-        // 告知浏览器这是一个字节流，浏览器处理字节流的默认方式就是下载。
-        httpHeaders.setContentType(MediaType.APPLICATION_OCTET_STREAM);
-        // 在常规的 HTTP 应答中，Content-Disposition 响应标头指示回复的内容该以何种形式展示，是以内联的形式（即网页或者页面的一部分），还是以附件的形式下载并保存到本地
-        httpHeaders.setContentDispositionFormData("attachment", file.getName());
+            // readAllBytes 适合读取小内存的数据
+            return new ResponseEntity<>(Files.readAllBytes(file.toPath()), httpHeaders, HttpStatus.OK);
+        }
 
-        // readAllBytes 适合读取小内存的数据
-        ResponseEntity<byte[]> responseEntity = new ResponseEntity<>(Files.readAllBytes(file.toPath()), httpHeaders, HttpStatus.OK);
-        return responseEntity;
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
     }
 }
