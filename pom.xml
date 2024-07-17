@@ -12,6 +12,7 @@
         <module>learn-springmvc-xml</module>
         <module>learn-springmvc-restful</module>
         <module>learn-springmvc-annotation</module>
+        <module>learn-springmvc-validation</module>
     </modules>
     <version>1.0-SNAPSHOT</version>
 
@@ -24,6 +25,8 @@
         <lombok.version>1.18.32</lombok.version>
         <jakarta.servlet.api.version>6.1.0</jakarta.servlet.api.version>
         <jackson.version>2.17.2</jackson.version>
+        <jakarta.validation.api.version>3.1.0</jakarta.validation.api.version>
+        <hibernate.validator.version>8.0.1.Final</hibernate.validator.version>
     </properties>
 
     <dependencyManagement>
@@ -63,6 +66,20 @@
                 <groupId>com.fasterxml.jackson.core</groupId>
                 <artifactId>jackson-databind</artifactId>
                 <version>${jackson.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/jakarta.validation/jakarta.validation-api -->
+            <dependency>
+                <groupId>jakarta.validation</groupId>
+                <artifactId>jakarta.validation-api</artifactId>
+                <version>${jakarta.validation.api.version}</version>
+            </dependency>
+
+            <!-- https://mvnrepository.com/artifact/org.hibernate.validator/hibernate-validator -->
+            <dependency>
+                <groupId>org.hibernate.validator</groupId>
+                <artifactId>hibernate-validator</artifactId>
+                <version>${hibernate.validator.version}</version>
             </dependency>
 
         </dependencies>

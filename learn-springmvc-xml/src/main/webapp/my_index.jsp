@@ -6,7 +6,7 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>项目首页，不经过springmvc</title>
+  <title>练习 springmvc xml配置方式</title>
 </head>
 <body>
 Tomcat处理首页

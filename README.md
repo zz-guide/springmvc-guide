@@ -5,3 +5,4 @@
 - [x] learn-springmvc-xml
 - [x] learn-springmvc-restful
 - [x] learn-springmvc-annotation
+- [x] learn-springmvc-validation
