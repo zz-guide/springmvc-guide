@@ -11,7 +11,7 @@
 
     <packaging>war</packaging>
     <groupId>org.zz.springmvc.guide.validation</groupId>
-    <artifactId>learn-springmvc-validation</artifactId>
+    <artifactId>learn-springmvc-parameter</artifactId>
 
     <dependencies>
         <dependency>
