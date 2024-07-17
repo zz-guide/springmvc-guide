@@ -1,4 +1,4 @@
-package org.zz.springmvc.guide.validation.controller.params;
+package org.zz.springmvc.guide.parameter.controller.params;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

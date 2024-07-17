@@ -10,7 +10,7 @@
     </parent>
 
     <packaging>war</packaging>
-    <groupId>org.zz.springmvc.guide.validation</groupId>
+    <groupId>org.zz.springmvc.guide.parameter</groupId>
     <artifactId>learn-springmvc-parameter</artifactId>
 
     <dependencies>

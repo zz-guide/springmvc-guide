@@ -1,4 +1,4 @@
-package org.zz.springmvc.guide.validation.ro;
+package org.zz.springmvc.guide.parameter.ro;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

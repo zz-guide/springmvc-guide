@@ -11,7 +11,7 @@
         http://www.springframework.org/schema/mvc
         https://www.springframework.org/schema/mvc/spring-mvc.xsd">
 
-    <context:component-scan base-package="org.zz.springmvc.guide.validation"/>
+    <context:component-scan base-package="org.zz.springmvc.guide.parameter"/>
 
     <bean id="internalResourceViewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="prefix" value="/WEB-INF/jsp/"/>

@@ -12,7 +12,7 @@
         <module>learn-springmvc-xml</module>
         <module>learn-springmvc-restful</module>
         <module>learn-springmvc-annotation</module>
-        <module>learn-springmvc-validation</module>
+        <module>learn-springmvc-parameter</module>
     </modules>
     <version>1.0-SNAPSHOT</version>
 

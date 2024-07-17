@@ -1,4 +1,4 @@
-package org.zz.springmvc.guide.validation.controller;
+package org.zz.springmvc.guide.parameter.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

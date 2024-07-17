@@ -1,8 +1,8 @@
-package org.zz.springmvc.guide.validation.controller.params;
+package org.zz.springmvc.guide.parameter.controller.params;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
-import org.zz.springmvc.guide.validation.ro.User;
+import org.zz.springmvc.guide.parameter.ro.User;
 
 @Controller
 @RequestMapping("/params/post/applicationJson")

@@ -1,10 +1,10 @@
-package org.zz.springmvc.guide.validation.controller.params;
+package org.zz.springmvc.guide.parameter.controller.params;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.zz.springmvc.guide.validation.ro.User;
+import org.zz.springmvc.guide.parameter.ro.User;
 
 /**
  * 1. 旧版本不加 @RequestParam 也能进行正确映射，新版本会报错，以防万一之后的参数都默认加上该注解。
