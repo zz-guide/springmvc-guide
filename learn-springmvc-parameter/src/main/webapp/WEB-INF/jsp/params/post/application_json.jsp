@@ -10,9 +10,9 @@
 </head>
 <body>
 <div>
-    <div>1. <button onclick="handleClick1()">body参数，必传，实体类接收 </button></div>
-    <div>2. <button onclick="handleClick2()">body参数，非必传，实体类接收</button></div>
-    <div>3. <button onclick="handleClick3()">body参数，必传，多个形参接收</button></div>
+    <div><button onclick="handleClick1()">body参数，必传，实体类接收 </button></div>
+    <div><button onclick="handleClick2()">body参数，非必传，实体类接收</button></div>
+    <div><button onclick="handleClick3()">body参数，必传，多个形参接收</button></div>
     <script>
         function handleClick1(){
             const formData = {
@@ -32,15 +32,14 @@
         }
 
         function handleClick2(){
-            const formData = {
-            };
+            const formData = {};
 
             fetch("${pageContext.request.contextPath}/params/post/applicationJson/noRequire", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify(formData),
+                body: null, //JSON.stringify(formData),
             }).then((resp) => {
                 console.log("resp:", resp)
             })

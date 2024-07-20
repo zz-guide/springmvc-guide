@@ -10,17 +10,20 @@
 </head>
 <body>
 <div>
-    <div>1. <button onclick="handleClick1()">FormData 参数，必传，实体类接收 </button></div>
-    <div>2. <button onclick="handleClick2()">FormData 参数，非必传，实体类接收</button></div>
-    <div>3. <button onclick="handleClick3()">FormData 参数，必传，多个形参接收</button></div>
+    <div><button onclick="handleClick1()">必传，多个形参接收 </button></div>
+    <div><button onclick="handleClick2()">必传，实体类接收</button></div>
+    <div><button onclick="handleClick3()">非必传，实体类接收</button></div>
     <script>
         function handleClick1(){
             const formData = new FormData();
             formData.append('id', '1');
             formData.append('username', '用户1');
 
-            fetch("${pageContext.request.contextPath}/params/post/formData/require", {
+            fetch("${pageContext.request.contextPath}/params/post/formData/multiParams", {
                 method: 'POST',
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
                 body: formData,
             }).then((resp) => {
                 console.log("resp:", resp)
@@ -29,9 +32,14 @@
 
         function handleClick2(){
             const formData = new FormData();
+            formData.append('id', '2');
+            formData.append('username', '用户2');
 
             fetch("${pageContext.request.contextPath}/params/post/formData/require", {
                 method: 'POST',
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
                 body: formData,
             }).then((resp) => {
                 console.log("resp:", resp)
@@ -39,13 +47,12 @@
         }
 
         function handleClick3(){
-            const formData = new FormData();
-            formData.append('id', '1');
-            formData.append('username', '用户1');
-
-            fetch("${pageContext.request.contextPath}/params/post/formData/require", {
+            fetch("${pageContext.request.contextPath}/params/post/formData/noRequire", {
                 method: 'POST',
-                body: formData,
+                headers: {
+                    'Content-Type': 'multipart/form-data',
+                },
+                body: null,
             }).then((resp) => {
                 console.log("resp:", resp)
             })

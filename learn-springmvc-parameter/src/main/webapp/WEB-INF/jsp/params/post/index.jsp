@@ -10,9 +10,18 @@
 </head>
 <body>
 <div>
-    <div><a href="${pageContext.request.contextPath}/params/post/post_application_json">application/json 接收</a></div>
-    <div><a href="${pageContext.request.contextPath}/params/post/post_multipart_form_data">multipart/form-data 接收</a></div>
-    <div><a href="${pageContext.request.contextPath}/params/post/post_urlencoded">application/x-www-form-urlencoded 接收</a></div>
+    <div>
+        <a href="${pageContext.request.contextPath}/params/post/application_json">application/json 接收</a>
+        <div>json字符串形式提交<div>
+    </div>
+    <div>
+        <a href="${pageContext.request.contextPath}/params/post/multipart_form_data">multipart/form-data 接收</a>
+        <div>multipart/form-data：表单数据被编码为一条消息，页上的每个控件对应消息中的一个部分</div>
+    </div>
+    <div>
+        <a href="${pageContext.request.contextPath}/params/post/urlencoded">application/x-www-form-urlencoded 接收</a>
+        <div>application/x-www-form-urlencoded：表单数据被编码为名称/值对，这是标准的编码格式，也是默认的</div>
+    </div>
 </div>
 </body>
 </html>

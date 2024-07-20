@@ -13,7 +13,7 @@ import org.zz.springmvc.guide.parameter.ro.User;
 
 @Controller
 @RequestMapping("/params/get")
-public class GetController {
+public class ParamsGetController {
 
     @GetMapping("")
     public String index() {
@@ -25,7 +25,7 @@ public class GetController {
             @RequestParam(value = "username", required = false) String username,
             @RequestParam(value = "id", required = false) Long id
     ) {
-        // 非必传，无默认值
+        System.out.println("=== 非必传，无默认值 ===");
         System.out.println("id:" + id); // null
         System.out.println("username:" + username); // null
 
@@ -37,7 +37,7 @@ public class GetController {
             @RequestParam(value = "username", required = false, defaultValue = "") String username,
             @RequestParam(value = "id", required = false, defaultValue = "345") Long id
     ) {
-        // 非必传，有默认值
+        System.out.println("=== 非必传，有默认值 ===");
         System.out.println("id:" + id); // 345
         System.out.println("username:" + username); // ""
 
@@ -49,7 +49,7 @@ public class GetController {
             @RequestParam(value = "username") String username,
             @RequestParam(value = "id") Long id
     ) {
-        // 必传, 如果没有对应参数，则直接抛出异常
+        System.out.println("=== 必传, 如果没有对应参数，则直接抛出异常 ===");
         System.out.println("id:" + id);
         System.out.println("username:" + username);
 
@@ -62,7 +62,8 @@ public class GetController {
         // 不需要加 @RequestParam
         // 若参数名称与实体类对象的属性名称相同，则可以自动绑定
         // 若不传或者名称不匹配，则为对应类型的默认值null
-        // 即使一个参数没有，user也不可能是null
+        // user对象必然存在，不会是null
+        System.out.println("=== 实体类接收 ===");
         System.out.println("user:" + user);
         return "/ok";
     }

@@ -6,26 +6,22 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>练习 springmvc POST请求方式 参数校验</title>
+    <title>>POST application/x-www-form-urlencoded 请求方式</title>
 </head>
 <body>
 <div>
-    <div>
-        <div>application/json 方式</div>
-        <div>1. <button onclick="handleClick1()">基本类型，非必传，不设置默认值, </button></div>
-    </div>
-
-    <div>2. <button onclick="handleClick2()">基本类型，非必传， 设置了默认值, application/json</button></div>
-    <div>3. <button onclick="handleClick3()">基本类型，必传, application/json</button></div>
-    <div>3. <button onclick="handleClick4()">实体对象映射参数, application/json</button></div>
-    <div>3. <button onclick="handleClick5()">实体对象映射参数,application/x-www-form-urlencoded</button></div>
+    <div><button onclick="handleClick1()">必传，实体类接收</button></div>
+    <div><button onclick="handleClick2()">请求体 为null，实体类接收</button></div>
+    <div><button onclick="handleClick3()">请求体 为 空字符串，实体类接收</button></div>
+    <div><button onclick="handleClick4()">请求体 必传，多个形参接收</button></div>
     <script>
-        function handleClick5(){
+        function handleClick1(){
             const params = new URLSearchParams();
-            params.append('name', '用户5');
-            params.append('id', '5');
+            params.append('username', '用户1');
+            params.append('id', '1');
             console.log("param:", params.toString())
-            fetch("${pageContext.request.contextPath}/params/post/require", {
+
+            fetch("${pageContext.request.contextPath}/params/post/urlEncoded/require", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
@@ -36,26 +32,37 @@
             })
         }
         function handleClick2(){
-            const params = new URLSearchParams();
-            params.append('name', '用户5');
-            params.append('id', '5');
-            console.log("param:", params.toString())
-            fetch("${pageContext.request.contextPath}/params/post/noRequire", {
+            fetch("${pageContext.request.contextPath}/params/post/urlEncoded/noRequire", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
                 },
-                body: params.toString(),
+                body: null, // 或者这里直接不写，效果一样
             }).then((resp) => {
                 console.log("resp:", resp)
             })
         }
+
         function handleClick3(){
+            fetch("${pageContext.request.contextPath}/params/post/urlEncoded/noRequire", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: "",
+            }).then((resp) => {
+                console.log("resp:", resp)
+            })
+        }
+
+        function handleClick4(){
             const params = new URLSearchParams();
-            params.append('name', '用户5');
-            params.append('id', '5');
+            params.append('username', '用户123');
+            params.append('id', '145');
             console.log("param:", params.toString())
-            fetch("${pageContext.request.contextPath}/params/post/noRequire", {
+
+            // url上的参数会覆盖 URLSearchParams定义的参数
+            fetch("${pageContext.request.contextPath}/params/post/urlEncoded/multiParams?username=222&id=444", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/x-www-form-urlencoded'
