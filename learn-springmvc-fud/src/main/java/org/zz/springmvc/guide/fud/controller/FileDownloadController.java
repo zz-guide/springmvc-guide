@@ -1,6 +1,5 @@
 package org.zz.springmvc.guide.fud.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ByteArrayResource;
 import org.springframework.core.io.Resource;
 import org.springframework.http.HttpHeaders;
@@ -10,7 +9,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.client.RestTemplate;
 import org.zz.springmvc.guide.fud.utils.FileUploadUtils;
 
 import java.io.*;
@@ -43,7 +41,7 @@ public class FileDownloadController {
         // 将字节数组封装为Resource对象
         Resource resource = new ByteArrayResource(imageBytes);
 
-        return new ResponseEntity<>(resource, httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(resource, httpHeaders, HttpStatus.CREATED);
     }
 
     @GetMapping("/t2")
@@ -64,6 +62,6 @@ public class FileDownloadController {
         // 将字节数组封装为Resource对象
         Resource resource = new ByteArrayResource(imageBytes);
 
-        return new ResponseEntity<>(resource, httpHeaders, HttpStatus.OK);
+        return new ResponseEntity<>(resource, httpHeaders, HttpStatus.CREATED);
     }
 }
