@@ -94,16 +94,6 @@
     </div>
 
     <div>
-        <div>测试 文件上传</div>
-        <div><a href="file/uploadIndex">进入文件上传页面</a></div>
-    </div>
-
-    <div>
-        <div>测试 文件下载</div>
-        <div><a href="file/download">点击下载文件</a></div>
-    </div>
-
-    <div>
         <div>测试自定义异常</div>
         <div><a href="exception/test">点击触发异常</a></div>
     </div>
