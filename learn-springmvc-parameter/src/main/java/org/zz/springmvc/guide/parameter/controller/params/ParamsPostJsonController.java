@@ -8,6 +8,14 @@ import org.zz.springmvc.guide.parameter.ro.User;
 @RequestMapping("/params/post/applicationJson")
 public class ParamsPostJsonController {
 
+    @PostMapping(value = "/noBody")
+    public String noBody(User user) {
+        // 测试 不加 @RequestBody
+        // 发现接收不到参数，必须 @RequestBody
+        System.out.println("user:" + user);
+        return "/ok";
+    }
+
     @PostMapping(value = "/require")
     public String require(@RequestBody User user) {
         // body参数接收需要 @RequestBody 注解，默认必传
@@ -29,9 +37,14 @@ public class ParamsPostJsonController {
     }
 
     @PostMapping("/multiParams")
-    public void multiParams(@RequestBody String username, @RequestBody Long id) {
+    public String multiParams(
+            @RequestParam(value = "username", required = false) String username,
+            @RequestParam(value = "id", required = false) Long id) {
+        // @RequestBody 不支持多个形参
+        // 多个 @RequestParam 无法接受body参数
         System.out.println("===  使用多个形参接收body 参数, 默认不支持 ===");
         System.out.println("id:" + id);
         System.out.println("username:" + username);
+        return "/ok";
     }
 }

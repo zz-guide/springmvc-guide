@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.zz.springmvc.guide.fud.utils.FileUploadUtils;
 
 import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -46,8 +48,14 @@ public class FileDownloadController {
 
     @GetMapping("/t2")
     public ResponseEntity<?> t2() throws IOException {
-        Path downloadFilePath = Path.of("https://i0.hdslb.com/bfs/archive/6e8e16d02a0f0c1cf0b246e13a5bf3eadef52d4e.jpg");
-        String filename = downloadFilePath.getFileName().toString();
+        String remoteUrl = "https://i0.hdslb.com/bfs/archive/6e8e16d02a0f0c1cf0b246e13a5bf3eadef52d4e.jpg";
+        String[] bb = remoteUrl.split("[?]")[0].split("/");
+        String filename = bb[bb.length - 1];
+
+        URL url = new URL(remoteUrl);
+        HttpURLConnection urlConnection = (HttpURLConnection)url.openConnection();
+        urlConnection.setRequestMethod("GET");
+        BufferedInputStream bufferedInputStream = new BufferedInputStream(urlConnection.getInputStream());
 
         // 文件下载设置
         HttpHeaders httpHeaders = new HttpHeaders();
@@ -56,11 +64,8 @@ public class FileDownloadController {
         // 在常规的 HTTP 应答中，Content-Disposition 响应标头指示回复的内容该以何种形式展示，是以内联的形式（即网页或者页面的一部分），还是以附件的形式下载并保存到本地
         httpHeaders.setContentDispositionFormData("attachment", filename);
 
-        // readAllBytes 读取
-        byte[] imageBytes = Files.readAllBytes(downloadFilePath);
-
         // 将字节数组封装为Resource对象
-        Resource resource = new ByteArrayResource(imageBytes);
+        Resource resource = new ByteArrayResource(bufferedInputStream.readAllBytes());
 
         return new ResponseEntity<>(resource, httpHeaders, HttpStatus.CREATED);
     }

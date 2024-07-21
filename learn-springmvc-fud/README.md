@@ -11,3 +11,4 @@
 - [x] 使用 原生输入输出流保存文件
 - [x] 使用 Files.copy() 直接拷贝文件
 - [x] 使用 Files.readAllBytes(downloadFilePath) 读取本地服务器图片数据进行下载
+- [x] 使用 URL类 下载远程服务器图片

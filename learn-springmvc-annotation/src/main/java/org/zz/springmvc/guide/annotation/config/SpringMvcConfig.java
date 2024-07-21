@@ -13,8 +13,8 @@ import java.util.Properties;
 
 @ComponentScan("org.zz.springmvc.guide.annotation")
 // 开启注解驱动,  <mvc:annotation-driven/>
-@EnableWebMvc
 @Configuration
+@EnableWebMvc
 public class SpringMvcConfig implements WebMvcConfigurer {
 
     @Bean

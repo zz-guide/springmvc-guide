@@ -34,6 +34,9 @@
     <div><a href="redirect/index3">测试 redirect3 重定向到外网地址</a></div>
 
     <div><a href="page">测试 mvc:view-controller </a></div>
+
+    <div><a href="modelAttribute/t1">测试@ModelAttribute1 </a></div>
+    <div><a href="modelAttribute/t2">测试@ModelAttribute2 </a></div>
 </div>
 </body>
 </html>

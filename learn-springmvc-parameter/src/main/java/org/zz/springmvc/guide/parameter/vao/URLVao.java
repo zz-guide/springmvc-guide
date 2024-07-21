@@ -3,14 +3,16 @@ package org.zz.springmvc.guide.parameter.vao;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
+import org.hibernate.validator.constraints.URL;
 
+/**
+ * 1. @URL 判断是不是一个url
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DateVao {
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date testDate;
+public class URLVao {
+    @URL(message = "不是一个url")
+    private String testUrl;
 }

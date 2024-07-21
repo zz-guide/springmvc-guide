@@ -18,6 +18,9 @@
         <property name="suffix" value=".jsp"/>
     </bean>
 
+    <!-- 该 bean 用来支持 multipart/form-data 类型请求, 实体类形参必备-->
+    <bean id="multipartResolver" class="org.springframework.web.multipart.support.StandardServletMultipartResolver"/>
+
     <mvc:annotation-driven/>
     <mvc:default-servlet-handler/>
 </beans>

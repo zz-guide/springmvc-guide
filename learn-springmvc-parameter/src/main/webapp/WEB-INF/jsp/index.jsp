@@ -19,9 +19,11 @@
 <div>=========================================================</div>
 <div>
     <h1>练习参数校验</h1>
-    <div><a href="${pageContext.request.contextPath}/validation/get">GET 校验参数</a></div>
+    <div><a href="${pageContext.request.contextPath}/valid/get">GET 校验参数 @Valid</a></div>
+    <br />
+    <div><a href="${pageContext.request.contextPath}/validated/get">GET 校验参数 @Validated</a></div>
     <br>
-    <div><a href="${pageContext.request.contextPath}/validation/post">POST 校验参数</a></div>
+<%--    <div><a href="${pageContext.request.contextPath}/validation/post">POST 校验参数</a></div>--%>
 </div>
 </body>
 </html>

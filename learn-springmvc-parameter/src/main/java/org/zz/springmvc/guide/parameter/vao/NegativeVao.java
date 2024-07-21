@@ -1,16 +1,17 @@
 package org.zz.springmvc.guide.parameter.vao;
 
+import jakarta.validation.constraints.Negative;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.format.annotation.DateTimeFormat;
 
-import java.util.Date;
-
+/**
+ * 1. @Negative 负数
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class DateVao {
-    @DateTimeFormat(pattern = "yyyy-MM-dd")
-    private Date testDate;
+public class NegativeVao {
+    @Negative(message = "负数")
+    private Integer testNegative;
 }
