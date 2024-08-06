@@ -6,7 +6,9 @@ import org.springframework.web.filter.CharacterEncodingFilter;
 import org.springframework.web.filter.HiddenHttpMethodFilter;
 import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
-import java.io.File;
+/**
+ * 用来替代 web.xml 中配置 DispatcherServlet
+ */
 
 @Configuration
 public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
@@ -25,7 +27,7 @@ public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServlet
     @Override
     protected String[] getServletMappings() {
         // 配置 DispatcherServlet
-        return new String[0];
+        return new String[]{};
     }
 
     @Override

@@ -15,13 +15,11 @@ import java.util.Map;
 public class JsonController {
 
     @GetMapping(value = "/string", produces = "application/json")
-    @ResponseBody
     public String stringJson() {
         return "{\"msg\":\"返回值是json字符串，但需要用 produces 约束\"}";
     }
 
     @GetMapping(value = "/map")
-    @ResponseBody
     public Map<?, ?> mapJson() {
         Map<String, Object> map = new HashMap<>();
         map.put("msg", "返回值是map对象[发现不加  @ResponseBody 也能正常返回json, 说明是springboot的默认行为]");
@@ -29,7 +27,6 @@ public class JsonController {
     }
 
     @GetMapping(value = "/demoData")
-    @ResponseBody
     public User demoDataJson() {
         User user = new User();
         user.setId(1L);
@@ -38,19 +35,16 @@ public class JsonController {
     }
 
     @GetMapping(value = "/stringArray")
-    @ResponseBody
     public String[] stringArrayJson() {
         return new String[]{"返回一个字符串数组", "world"};
     }
 
     @GetMapping(value = "/list")
-    @ResponseBody
     public List<?> listJson() {
         return List.of("返回一个list", "world");
     }
 
     @GetMapping(value = "/object")
-    @ResponseBody
     public Object objectJson() {
         User user = new User();
         user.setId(1L);

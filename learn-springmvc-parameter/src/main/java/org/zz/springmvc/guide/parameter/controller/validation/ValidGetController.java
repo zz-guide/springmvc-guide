@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.zz.springmvc.guide.parameter.vao.*;
+import org.zz.springmvc.guide.parameter.vao.custom.MyVao;
 
 @Controller
 @RequestMapping("/valid/get")
@@ -145,6 +146,12 @@ public class ValidGetController {
     @GetMapping("/testAlias")
     public String testAlias(@Valid AliasVao aliasVao) {
         System.out.println("aliasVao:" + aliasVao);
+        return "/ok";
+    }
+
+    @GetMapping("/testMyVao")
+    public String testMyVao(@Valid MyVao myVao) {
+        System.out.println("myVao:" + myVao);
         return "/ok";
     }
 }

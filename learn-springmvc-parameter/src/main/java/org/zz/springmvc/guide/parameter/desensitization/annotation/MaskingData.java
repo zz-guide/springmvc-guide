@@ -14,20 +14,7 @@ import java.lang.annotation.Target;
 @JacksonAnnotationsInside
 @JsonSerialize(using = MaskingDataSerializer.class)
 public @interface MaskingData {
-
-    /**
-     * 匹配正则
-     *
-     * @return
-     */
     String patten();
 
-    /**
-     * 替换字符
-     *
-     * @return
-     */
     String replace() default "*";
-
-
 }

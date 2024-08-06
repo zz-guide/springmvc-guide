@@ -11,6 +11,11 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import java.util.List;
 import java.util.Properties;
 
+/**
+ * 用来替代 springmvc-servlet.xml
+ */
+
+
 @ComponentScan("org.zz.springmvc.guide.annotation")
 // 开启注解驱动,  <mvc:annotation-driven/>
 @Configuration
@@ -45,7 +50,6 @@ public class SpringMvcConfig implements WebMvcConfigurer {
         simpleMappingExceptionResolver.setExceptionAttribute("e");
 
         resolvers.add(simpleMappingExceptionResolver);
-
     }
 
     @Override

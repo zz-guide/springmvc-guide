@@ -176,6 +176,11 @@
     <div>参数别名</div>
     <div><a href="${pageContext.request.contextPath}/valid/get/testAlias?name=呵呵">本名参数接收，校验成功</a></div>
     <div><a href="${pageContext.request.contextPath}/valid/get/testAlias?name_alias=哈哈">别名参数接收，校验成功</a></div>
+
+    <br/>
+    <div>自定义参数校验</div>
+    <div><a href="${pageContext.request.contextPath}/valid/get/testMyVao?number=3">校验成功</a></div>
+    <div><a href="${pageContext.request.contextPath}/valid/get/testMyVao?number=7">校验成功</a></div>
 </div>
 <br/>
 <div>
